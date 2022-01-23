@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Delete page
+{% endblock title %}
+
+{% block content %}
+<div>
+    <h1>Delete page</h1>
+</div>
+<div>
+    <p>
+        <strong>Delete {{ obj }}</strong>
+    </p>
+    <a href="{{ request.META.HTTP_REFERER }}"><button>Go to previous page</button></a>
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ obj }}"?</p>
+        <input type="submit" value="Delete">
+    </form>
+</div>
+{% endblock content %}

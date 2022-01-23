@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Greet page
+{% endblock title %}
+
+{% block content %}
+<div>
+    <h1>Greet page</h1>
+</div>
+<div>
+    <div>
+        {% if greet_message %}
+            <p>
+                <strong>{{ greet_message }}</strong>
+            </p>
+        {% endif %}
+        <a href="{% url 'home' %}"><button>Back</button></a>
+    </div>
+</div>
+{% endblock content %}

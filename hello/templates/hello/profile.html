@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    Profile page
+{% endblock title %}
+
+{% block content %}
+<div>
+    <h1>@{{ user }}</h1>
+</div>
+<div>
+    <div>
+        {% include 'hello/activity_component.html' %}
+    </div>
+
+    <div>
+
+    </div>
+
+    <div>
+
+    </div>
+    {% for email in emails %}
+        <p>{{ email }}</p>
+    {% endfor %}
+</div>
+{% endblock content %}

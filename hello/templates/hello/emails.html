@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Emails page
+{% endblock title %}
+
+{% block content %}
+<style>
+    .email-container {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+    .message-container {
+        border: 4px double black;
+    }
+</style>
+<div class="email-container">
+    <div>
+        <div>
+            <h1>List of emails</h1>
+        </div>
+        <div>
+            <div>
+                <strong>Total emails: {{ emails_count }}</strong>
+            </div>
+            <div>
+                {% for email in emails %}
+                    <hr>
+                    {% if request.user == email.user %}
+                        <div>
+                            <a href="{% url 'update' email.id %}" class="text-decoration-none">Edit</a>
+                            <a href="{% url 'delete' email.id %}" class="text-decoration-none">Delete</a>
+                        </div>
+                    {% endif %}
+                    <div>
+                        <strong>
+                            <a href="{% url 'show' email.id %}" class="text-decoration-none">{{ email.email }}</a>
+                            - <a href="{% url 'profile' email.user.id %}">{{ email.user }}</a>
+                        </strong>
+                    </div>
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="message-container">
+        {% include 'hello/activity_component.html' %}
+    </div>
+</div>
+{% endblock content %}

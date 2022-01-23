@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Hello page
+{% endblock title %}
+
+{% block content %}
+<div>
+    <h1>Hello page</h1>
+</div>
+<div>
+    <p>
+        <strong>Enter email</strong>
+    </p>
+    <form action="{% url 'greet' %}" method="post">
+        {% csrf_token %}
+        {# {{form.as_p}} #}
+        <p><input type="text" name="email" placeholder="Enter email here..."></p>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% endblock content %}
